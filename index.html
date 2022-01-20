@@ -5,23 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <div>
-        <h2 class="QuestionBox">Question Field</h2>
+        <h2 class="questionbox">Question Field</h2>
+    </div>
+
+       <div>
+        <h3 id="question"></h3>
+        <button id="answerA" onclick="compare(event)">1</button>
+        <button id="answerB" onclick="compare(event)">2</button>
+        <button id="answerC" onclick="compare(event)">3</button>
+        <button id="answerD" onclick="compare(event)">4</button>
     </div>
 
     <div>
-        <li><button id="choice1"></button></li>
-        <li><button id="choice2"></button></li>
-        <li><button id="choice3"></button></li>
-        <li><button id="choice4"></button></li>
+        <h4 id="timer">120</h4>
     </div>
     
     <div>
-        <button id="start" class="Btn"></button>
+        <button id="start" class="Btn">Start Quiz</button>
     </div>
     
+    <div id="leaderboard">
+        <h5>Leaderboard</h5>
+
+    </div>
     
     <script src="javascript.js"></script>
     

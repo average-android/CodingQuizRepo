@@ -28,6 +28,15 @@ var questionArray = [
         c: "If you did more work, yeah.",
         d: "No.",
         correct: "If you did more work, yeah."
+    },
+
+    {
+        question : "Does this third question work perhaps?",
+        a: "No",
+        b: "Nope.avi",
+        c: "Yes",
+        d: "Never",
+        correct: "Never"
     }
 ];
 
@@ -44,6 +53,7 @@ function displayQuestion() {
 
 
 function questionTime() {
+    console.log("quiz begins");
     countdown = setInterval(timerFunction, 1000)
     /*startBtn.classList.add("hide");
     userChoices.classList.remove("hide");*/
@@ -70,15 +80,24 @@ function timerCheck() {
     }
 }
 
-function compare(event){
+function compare(event) {
     if(event.target.innerText === questionArray[currentQuestion].correct) { 
-      timerCount -= 10;
       timer.innerText = timerCount;
+      score++;
+    }
+    if(event.target.innerText !== questionArray[currentQuestion].correct){
+        timerCount= timerCount - 5;
+        timer.innerText = timerCount;
     }
     currentQuestion++;
-    if(currentQuestion < questionArray.length) questionDisplay();
+    if(currentQuestion < questionArray.length) displayQuestion();
     else endQuiz();
+
 }  
+
+function endquiz() {
+
+}
 startBtn.addEventListener("click", questionTime);
 
 

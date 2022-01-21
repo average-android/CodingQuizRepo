@@ -8,35 +8,62 @@ var timer = document.getElementById("timer");
 var leaderBoard = document.getElementById("leaderBoard");
 var currentQuestion = 0;
 var timerCount = 120;
-var scoreDisplay = 0;
+var scoreDisplay = document.getElementById("scoreDisplay");
 var score = 0;
 
 var questionArray = [
     {
-        question : "Does this work?",
-        a: "No",
-        b: "No",
-        c: "Maybe",
-        d: "Yes",
-        correct: "Maybe"
+        question : "HTML means?",
+        a: "Hot Tomato Makeout Lane",
+        b: "Hand Trenching Middle Lane",
+        c: "Horse Time My Liege",
+        d: "Hyper Text Markup Language",
+        correct: "Hyper Text Markup Language"
     },
     
     {
-        question : "Does this also work?",
-        a: "Probably not",
-        b: "Maybe",
-        c: "If you did more work, yeah.",
-        d: "No.",
-        correct: "If you did more work, yeah."
+        question : "What does CSS stand for then?",
+        a: "Counter Strike Source",
+        b: "Cascading Style Sheets",
+        c: "Corn Sensation Special",
+        d: "Creatine Super Strength",
+        correct: "Cascading Style Sheets"
     },
 
     {
-        question : "Does this third question work perhaps?",
-        a: "No",
-        b: "Nope.avi",
-        c: "Yes",
-        d: "Never",
-        correct: "Never"
+        question : "Javascript does mostly what?",
+        a: "Makes your website look pretty",
+        b: "Lays the boneworks for website layout",
+        c: "Run APIs and functions for your webpage",
+        d: "Minecraft",
+        correct: "Run APIs and functions for your webpage"
+    },
+
+    {
+        question : "Javascript was made by who?",
+        a: "Brendan Eich",
+        b: "Bill Gates",
+        c: "Steve Jobs",
+        d: "Graydon Scates",
+        correct: "Brendan Eich"
+    },
+
+    {
+        question : "Which of the following is an actual 3rd party API for Javascript?",
+        a: "Source",
+        b: "Unreal Engine 5",
+        c: "CSS",
+        d: "jQuery",
+        correct: "jQuery"
+    },
+    
+    {
+        question : "Javascript can be coded in what type of file?",
+        a: ".swaws",
+        b: ".js",
+        c: ".css",
+        d: ".mp3",
+        correct: ".js"
     }
 ];
 
@@ -84,19 +111,31 @@ function compare(event) {
     if(event.target.innerText === questionArray[currentQuestion].correct) { 
       timer.innerText = timerCount;
       score++;
+      console.log("Correct");
     }
     if(event.target.innerText !== questionArray[currentQuestion].correct){
-        timerCount= timerCount - 5;
+        timerCount= timerCount - 20;
         timer.innerText = timerCount;
+        console.log("Incorrect");
     }
     currentQuestion++;
+    timerCheck();
     if(currentQuestion < questionArray.length) displayQuestion();
     else endQuiz();
 
 }  
 
-function endquiz() {
-
+function endQuiz() {
+    clearInterval(countdown)
+    clearInterval(timerCount)
+    var initials = prompt("Please put in your name.");
+    if (initials != null) {
+    
+    initials += "'s score = ";
+    initials += score;
+    leaderBoard.innerHTML = initials;
+    }
+    
 }
 startBtn.addEventListener("click", questionTime);
 
